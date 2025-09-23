@@ -126,16 +126,16 @@ export const authSlice = createSlice({
     builder
       .addCase(register.pending, (state) => {
         state.loading = true;
-        state.registerError = "";
+        state.registerError = "waiting";
       })
       .addCase(register.fulfilled, (state, action) => {
+        state.registerError = "";
         state.user = {
           email: action.payload.email,
           name: action.payload.name,
           uid: action.payload.uid,
         };
         state.loading = false;
-        state.registerError = "";
       })
       .addCase(register.rejected, (state) => {
         state.loading = false;
@@ -143,16 +143,16 @@ export const authSlice = createSlice({
       })
       .addCase(login.pending, (state) => {
         state.loading = true;
-        state.loginError = "";
+        state.loginError = "waiting";
       })
       .addCase(login.fulfilled, (state, action) => {
+        state.loginError = "";
         state.user = {
           email: action.payload.email,
           name: action.payload.name,
           uid: action.payload.uid,
         };
         state.loading = false;
-        state.loginError = "";
       })
       .addCase(login.rejected, (state) => {
         state.loading = false;
@@ -161,7 +161,7 @@ export const authSlice = createSlice({
       })
       .addCase(logOut.pending, (state) => {
         state.loading = true;
-        state.logoutError = "";
+        state.logoutError = "waiting";
       })
       .addCase(logOut.fulfilled, (state) => {
         state.user = {
