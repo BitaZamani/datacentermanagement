@@ -37,7 +37,7 @@ const Register = () => {
         <Inputs label="رمز عبور" type="password" name="password" />
         <Button
           htmlType="submit"
-          className="w-[300px]"
+          className="w-[80%] max-w-[300px]"
           color="blue"
           variant="solid"
         >

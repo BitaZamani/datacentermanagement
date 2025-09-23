@@ -140,11 +140,6 @@ export const authSlice = createSlice({
       .addCase(register.rejected, (state) => {
         state.loading = false;
         state.registerError = "error";
-        state.user = {
-          email: null,
-          name: null,
-          uid: null,
-        };
       })
       .addCase(login.pending, (state) => {
         state.loading = true;
@@ -161,11 +156,7 @@ export const authSlice = createSlice({
       })
       .addCase(login.rejected, (state) => {
         state.loading = false;
-        state.user = {
-          email: null,
-          name: null,
-          uid: null,
-        };
+
         state.loginError = "";
       })
       .addCase(logOut.pending, (state) => {

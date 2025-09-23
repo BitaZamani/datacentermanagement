@@ -23,18 +23,18 @@ const Login = () => {
     if (!error) navigate("/panel");
   };
   return (
-    <div className="h-screen flex justify-center items-center">
+    <div className="h-screen flex justify-center items-center w-full">
       <Form
         layout="vertical"
         onFinish={(values) => loginUser(values)}
-        className="flex flex-col gap-3 justify-center items-center border-2 min-h-[450px] border-blue-400 rounded-xl w-10/12 max-w-md"
+        className="flex flex-col gap-3 justify-center items-center border-2 min-h-[450px]  border-blue-400 rounded-xl w-10/12 max-w-md"
       >
         <h2 className="font-semibold text-xl">ورود به حساب کاربری</h2>
         <Inputs label="ایمیل" type="email" name="email" />
         <Inputs label="رمز عبور" type="password" name="password" />
         <Button
           htmlType="submit"
-          className="w-[300px]"
+          className="w-[80%] max-w-[300px]"
           color="blue"
           variant="solid"
         >
