@@ -83,7 +83,7 @@ const Datacenters = () => {
       {error ? (
         <span>{error}</span>
       ) : (
-        <Table columns={cols} dataSource={dataCenters} />
+        <Table columns={cols} dataSource={dataCenters} className="overflow-scroll"/>
       )}
       {openDataCenter && <DataCenterModal />}
     </div>
