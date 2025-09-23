@@ -157,7 +157,7 @@ export const authSlice = createSlice({
       .addCase(login.rejected, (state) => {
         state.loading = false;
 
-        state.loginError = "";
+        state.loginError = "error";
       })
       .addCase(logOut.pending, (state) => {
         state.loading = true;
