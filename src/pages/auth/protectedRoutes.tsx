@@ -5,6 +5,7 @@ import { auth } from "../../server/firebase";
 import { useDispatch, useSelector } from "react-redux";
 import type { RootState } from "../../slices/store";
 import { useNavigate } from "react-router-dom";
+import { notify } from "../../components/notify";
 
 const ProtectedRoutes = ({ children }: { children: ReactNode }) => {
   const dispatch = useDispatch();
@@ -24,7 +25,8 @@ const ProtectedRoutes = ({ children }: { children: ReactNode }) => {
     return () => unsubscribe();
   }, [dispatch]);
   if (!user.uid) {
-    navigate("/login");
+    notify("error", "کاربر نامعتبر");
+    navigate("/");
     return;
   }
   return <div>{children}</div>;

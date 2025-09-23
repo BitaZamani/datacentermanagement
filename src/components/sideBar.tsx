@@ -23,7 +23,7 @@ const SideBar = () => {
   const navigate = useNavigate();
   const logOutUser = () => {
     dispatch(logOut());
-    if (!error) navigate("/login");
+    if (!error) navigate("/");
   };
   return (
     <div>

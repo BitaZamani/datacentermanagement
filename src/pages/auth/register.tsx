@@ -46,7 +46,7 @@ const Register = () => {
         <span className="my-3">
           آیا حساب کاربری دارید؟
           <span
-            onClick={() => navigate("/login")}
+            onClick={() => navigate("/")}
             className="underline underline-offset-4 text-blue-700 cursor-pointer"
           >
             ورود
