@@ -10,7 +10,6 @@ const Register = () => {
   const dispatch = useDispatch<AppDispatch>();
   const loading = useSelector((state: RootState) => state.auth.loading);
   const user = useSelector((state: RootState) => state.auth.user);
-  const error = useSelector((state: RootState) => state.auth.registerError);
   const navigate = useNavigate();
   const registerUser = (values: {
     email: string;
@@ -21,8 +20,11 @@ const Register = () => {
       notify("error", "قبلا وارد شده‌اید.");
       return;
     }
-    dispatch(register(values));
-    if (!error) navigate("/panel");
+    dispatch(register(values))
+      .unwrap()
+      .then(() => {
+        navigate("/panel");
+      });
   };
   return (
     <div className="h-screen flex justify-center items-center">

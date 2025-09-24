@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 const ProtectedRoutes = ({ children }: { children: ReactNode }) => {
   const dispatch = useDispatch();
   const user = useSelector((state: RootState) => state.auth.user);
+  const loading = useSelector((state: RootState) => state.auth.loading);
   const navigate = useNavigate();
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -23,10 +24,12 @@ const ProtectedRoutes = ({ children }: { children: ReactNode }) => {
 
     return () => unsubscribe();
   }, [dispatch]);
-  if (!user.uid) {
-    navigate("/");
-    return;
-  }
+  useEffect(() => {
+    if (!user.uid && loading) {
+      navigate("/");
+      return;
+    }
+  }, [navigate, user.uid, loading]);
   return <div>{children}</div>;
 };
 

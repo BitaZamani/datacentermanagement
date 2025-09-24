@@ -11,7 +11,6 @@ const Login = () => {
   const dispatch = useDispatch<AppDispatch>();
   const loading = useSelector((state: RootState) => state.auth.loading);
   const user = useSelector((state: RootState) => state.auth.user);
-  const error = useSelector((state: RootState) => state.auth.loginError);
   const navigate = useNavigate();
 
   const loginUser = (values: { email: string; password: string }) => {
@@ -19,8 +18,11 @@ const Login = () => {
       notify("error", "قبلا وارد شده‌اید.");
       return;
     }
-    dispatch(login(values));
-    if (!error) navigate("/panel");
+    dispatch(login(values))
+      .unwrap()
+      .then(() => {
+        navigate("/panel");
+      });
   };
   return (
     <div className="h-screen flex justify-center items-center w-full">
